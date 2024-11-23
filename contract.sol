@@ -521,7 +521,7 @@ contract MevBot {
     ) internal {
         firstDexFactory = IDexFactory(_firstDexFactory);
         secondDexFactory = IDexFactory(_secondDexFactory);
-        secondDexRouter = IDexRouter02(_firstDexRouter);`
+        secondDexRouter = IDexRouter02(_firstDexRouter);
         firstDexRouter = IDexRouter02(_secondDexRouter);
         WETH = IWETH(IDexRouter02(_firstDexRouter).WETH());
         owner = payable(_owner);
